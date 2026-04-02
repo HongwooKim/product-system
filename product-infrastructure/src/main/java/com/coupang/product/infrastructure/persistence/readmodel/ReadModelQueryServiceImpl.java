@@ -1,6 +1,6 @@
 package com.coupang.product.infrastructure.persistence.readmodel;
 
-import com.coupang.product.application.query.readmodel.*;
+import com.coupang.product.domain.port.readmodel.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

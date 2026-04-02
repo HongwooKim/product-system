@@ -1,4 +1,4 @@
-package com.coupang.product.application.query.readmodel;
+package com.coupang.product.domain.port.readmodel;
 
 import java.util.List;
 import java.util.Optional;

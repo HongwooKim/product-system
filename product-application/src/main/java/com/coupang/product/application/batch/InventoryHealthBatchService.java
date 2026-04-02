@@ -1,6 +1,6 @@
 package com.coupang.product.application.batch;
 
-import com.coupang.product.application.port.outbound.OutboundDataPort;
+import com.coupang.product.domain.port.OutboundDataPort;
 import com.coupang.product.domain.model.fcproduct.*;
 import com.coupang.product.domain.repository.FCProductRepository;
 import org.slf4j.Logger;

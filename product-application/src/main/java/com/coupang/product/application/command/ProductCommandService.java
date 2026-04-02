@@ -1,6 +1,6 @@
 package com.coupang.product.application.command;
 
-import com.coupang.product.application.port.outbound.DomainEventPublisher;
+import com.coupang.product.domain.port.DomainEventPublisher;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.product.*;
 import com.coupang.product.domain.repository.ProductRepository;

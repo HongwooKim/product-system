@@ -1,6 +1,6 @@
 package com.coupang.product.infrastructure.kafka.producer;
 
-import com.coupang.product.application.port.outbound.DomainEventPublisher;
+import com.coupang.product.domain.port.DomainEventPublisher;
 import com.coupang.product.domain.event.*;
 import com.coupang.product.domain.model.common.DomainEvent;
 import org.slf4j.Logger;

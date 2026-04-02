@@ -1,4 +1,4 @@
-package com.coupang.product.infrastructure.kafka.consumer;
+package com.coupang.product.consumer;
 
 import com.coupang.product.domain.model.fcproduct.FCProduct;
 import com.coupang.product.domain.repository.FCProductRepository;

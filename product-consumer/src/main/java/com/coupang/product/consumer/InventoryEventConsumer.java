@@ -1,4 +1,4 @@
-package com.coupang.product.infrastructure.kafka.consumer;
+package com.coupang.product.consumer;
 
 import com.coupang.product.application.command.FCProductCommandService;
 import com.fasterxml.jackson.databind.JsonNode;

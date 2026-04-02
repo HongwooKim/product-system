@@ -1,7 +1,7 @@
 package com.coupang.product.application.command;
 
-import com.coupang.product.application.port.outbound.DomainEventPublisher;
-import com.coupang.product.application.port.outbound.OutboundDataPort;
+import com.coupang.product.domain.port.DomainEventPublisher;
+import com.coupang.product.domain.port.OutboundDataPort;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.fcproduct.*;
 import com.coupang.product.domain.model.product.FulfillmentType;

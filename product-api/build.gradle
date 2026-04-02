@@ -12,6 +12,7 @@ dependencies {
     implementation project(':product-domain')
     implementation project(':product-application')
     implementation project(':product-infrastructure')
+    implementation project(':product-consumer')
 
     // Web
     implementation 'org.springframework.boot:spring-boot-starter-web'

@@ -1,4 +1,4 @@
-package com.coupang.product.application.port.outbound;
+package com.coupang.product.domain.port;
 
 import com.coupang.product.domain.model.common.DomainEvent;
 

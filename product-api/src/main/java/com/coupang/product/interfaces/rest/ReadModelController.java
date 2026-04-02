@@ -1,6 +1,6 @@
 package com.coupang.product.interfaces.rest;
 
-import com.coupang.product.application.query.readmodel.*;
+import com.coupang.product.domain.port.readmodel.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

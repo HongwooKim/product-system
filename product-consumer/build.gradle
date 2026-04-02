@@ -1,7 +1,6 @@
 // ═══════════════════════════════════════
-// product-infrastructure
-// Kafka, JPA, 외부 시스템 연동.
-// domain + application에 의존.
+// product-consumer
+// Kafka Consumer. 외부 시스템 이벤트 수신.
 // ═══════════════════════════════════════
 
 apply plugin: 'io.spring.dependency-management'
@@ -14,21 +13,16 @@ dependencyManagement {
 
 dependencies {
     implementation project(':product-domain')
-
-    // JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation project(':product-application')
 
     // Kafka
     implementation 'org.springframework.kafka:spring-kafka'
 
-    // Database
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation 'org.flywaydb:flyway-core'
-    implementation 'org.flywaydb:flyway-database-postgresql'
-
-    // Jackson (Kafka consumer JSON 파싱)
+    // Jackson (JSON 파싱)
     implementation 'com.fasterxml.jackson.core:jackson-databind'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }

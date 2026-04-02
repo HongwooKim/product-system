@@ -1,6 +1,6 @@
 package com.coupang.product.infrastructure.config;
 
-import com.coupang.product.application.port.outbound.OutboundDataPort;
+import com.coupang.product.domain.port.OutboundDataPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

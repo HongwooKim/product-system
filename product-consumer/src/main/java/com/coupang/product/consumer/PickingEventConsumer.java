@@ -1,4 +1,4 @@
-package com.coupang.product.infrastructure.kafka.consumer;
+package com.coupang.product.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
