@@ -1,5 +1,6 @@
 package com.coupang.product.domain.model.product;
 
+import com.coupang.product.domain.model.converter.SellerIdConverter;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -20,6 +21,7 @@ public class SellerOffer {
     private String offerId;
 
     @Column(nullable = false, length = 36)
+    @Convert(converter = SellerIdConverter.class)
     private SellerId sellerId;
 
     @Column(nullable = false, precision = 15, scale = 2)

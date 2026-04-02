@@ -3,6 +3,7 @@ package com.coupang.product.domain.model.fcproduct;
 import com.coupang.product.domain.event.*;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.common.AggregateRoot;
+import com.coupang.product.domain.model.converter.*;
 import com.coupang.product.domain.model.product.FulfillmentType;
 import com.coupang.product.domain.model.product.ProductDimension;
 import com.coupang.product.domain.model.product.SKU;
@@ -39,12 +40,15 @@ public class FCProduct extends AggregateRoot {
 
     @Id
     @Column(length = 36)
+    @Convert(converter = FCProductIdConverter.class)
     private FCProductId id;
 
     @Column(nullable = false, length = 50)
+    @Convert(converter = SKUConverter.class)
     private SKU sku;
 
     @Column(nullable = false, length = 50)
+    @Convert(converter = WarehouseIdConverter.class)
     private WarehouseId warehouseId;
 
     @Enumerated(EnumType.STRING)
@@ -73,12 +77,15 @@ public class FCProduct extends AggregateRoot {
 
     // Slotting (flat columns, nullable — ACTIVE 전에는 null)
     @Column(length = 30)
+    @Convert(converter = LocationCodeConverter.class)
     private LocationCode primaryLocation;
 
     @Column(length = 30)
+    @Convert(converter = LocationCodeConverter.class)
     private LocationCode replenishLocation;
 
     @Column(length = 30)
+    @Convert(converter = LocationCodeConverter.class)
     private LocationCode bulkLocation;
 
     private int pickFaceCapacity;

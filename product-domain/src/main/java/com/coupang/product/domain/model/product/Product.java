@@ -3,6 +3,8 @@ package com.coupang.product.domain.model.product;
 import com.coupang.product.domain.event.ProductEvents;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.common.AggregateRoot;
+import com.coupang.product.domain.model.converter.ProductIdConverter;
+import com.coupang.product.domain.model.converter.SKUConverter;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -31,9 +33,11 @@ public class Product extends AggregateRoot {
 
     @Id
     @Column(length = 36)
+    @Convert(converter = ProductIdConverter.class)
     private ProductId id;
 
     @Column(nullable = false, unique = true, length = 50)
+    @Convert(converter = SKUConverter.class)
     private SKU sku;
 
     @Column(nullable = false, length = 200)
