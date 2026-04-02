@@ -1,6 +1,6 @@
 package com.coupang.product.consumer;
 
-import com.coupang.product.application.query.FCProductQueryService;
+import com.coupang.product.domain.port.FCProductQueryPort;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -15,10 +15,10 @@ public class ProcurementEventConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(ProcurementEventConsumer.class);
 
-    private final FCProductQueryService fcProductQueryService;
+    private final FCProductQueryPort fcProductQueryService;
     private final ObjectMapper objectMapper;
 
-    public ProcurementEventConsumer(FCProductQueryService fcProductQueryService, ObjectMapper objectMapper) {
+    public ProcurementEventConsumer(FCProductQueryPort fcProductQueryService, ObjectMapper objectMapper) {
         this.fcProductQueryService = fcProductQueryService;
         this.objectMapper = objectMapper;
     }

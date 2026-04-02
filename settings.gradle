@@ -1,7 +1,6 @@
 rootProject.name = 'product-system'
 
 include 'product-domain'
-include 'product-application'
 include 'product-infrastructure'
 include 'product-consumer'
 include 'product-api'

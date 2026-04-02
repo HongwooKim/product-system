@@ -4,6 +4,7 @@ import com.coupang.product.domain.model.fcproduct.FCProduct;
 import com.coupang.product.domain.model.fcproduct.FCProductStatus;
 import com.coupang.product.domain.model.fcproduct.VelocityClass;
 import com.coupang.product.domain.model.fcproduct.WarehouseId;
+import com.coupang.product.domain.port.FCProductQueryPort;
 import com.coupang.product.domain.repository.FCProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
-public class FCProductQueryService {
+public class FCProductQueryService implements FCProductQueryPort {
 
     private final FCProductRepository fcProductRepository;
 

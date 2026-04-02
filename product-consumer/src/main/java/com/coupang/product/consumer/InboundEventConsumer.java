@@ -1,6 +1,6 @@
 package com.coupang.product.consumer;
 
-import com.coupang.product.application.command.FCProductCommandService;
+import com.coupang.product.domain.port.FCProductCommandPort;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.fcproduct.StorageType;
 import com.coupang.product.domain.model.fcproduct.TemperatureZone;
@@ -21,10 +21,10 @@ public class InboundEventConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(InboundEventConsumer.class);
 
-    private final FCProductCommandService fcProductCommandService;
+    private final FCProductCommandPort fcProductCommandService;
     private final ObjectMapper objectMapper;
 
-    public InboundEventConsumer(FCProductCommandService fcProductCommandService, ObjectMapper objectMapper) {
+    public InboundEventConsumer(FCProductCommandPort fcProductCommandService, ObjectMapper objectMapper) {
         this.fcProductCommandService = fcProductCommandService;
         this.objectMapper = objectMapper;
     }

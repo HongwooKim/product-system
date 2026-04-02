@@ -1,6 +1,7 @@
 package com.coupang.product.application.command;
 
 import com.coupang.product.domain.port.DomainEventPublisher;
+import com.coupang.product.domain.port.FCProductCommandPort;
 import com.coupang.product.domain.port.OutboundDataPort;
 import com.coupang.product.domain.exception.DomainException;
 import com.coupang.product.domain.model.fcproduct.*;
@@ -18,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Service
-public class FCProductCommandService {
+public class FCProductCommandService implements FCProductCommandPort {
 
     private final FCProductRepository fcProductRepository;
     private final ProductRepository productRepository;

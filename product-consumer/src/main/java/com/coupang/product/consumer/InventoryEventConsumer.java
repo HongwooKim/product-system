@@ -1,6 +1,6 @@
 package com.coupang.product.consumer;
 
-import com.coupang.product.application.command.FCProductCommandService;
+import com.coupang.product.domain.port.FCProductCommandPort;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -15,10 +15,10 @@ public class InventoryEventConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(InventoryEventConsumer.class);
 
-    private final FCProductCommandService fcProductCommandService;
+    private final FCProductCommandPort fcProductCommandService;
     private final ObjectMapper objectMapper;
 
-    public InventoryEventConsumer(FCProductCommandService fcProductCommandService, ObjectMapper objectMapper) {
+    public InventoryEventConsumer(FCProductCommandPort fcProductCommandService, ObjectMapper objectMapper) {
         this.fcProductCommandService = fcProductCommandService;
         this.objectMapper = objectMapper;
     }
