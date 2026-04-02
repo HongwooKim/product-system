@@ -1,0 +1,87 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: product-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product_system
+    username: ${DB_USERNAME:product}
+    password: ${DB_PASSWORD:product}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+    consumer:
+      group-id: product-system
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "com.coupang.*"
+    listener:
+      ack-mode: manual
+
+# Kafka Topic Names
+kafka:
+  topics:
+    # Produce
+    product-registered: product.registered
+    product-updated: product.updated
+    product-discontinued: product.discontinued
+    product-seller-offer-changed: product.seller-offer-changed
+    fcproduct-registered: fcproduct.registered
+    fcproduct-activated: fcproduct.activated
+    fcproduct-slotting-assigned: fcproduct.slotting-assigned
+    fcproduct-velocity-reclassified: fcproduct.velocity-reclassified
+    fcproduct-suspended: fcproduct.suspended
+    fcproduct-replenishment-needed: fcproduct.replenishment-needed
+    # Consume
+    inbound-asn-received: inbound.asn-received
+    inbound-putaway-completed: inbound.putaway-completed
+    inventory-stock-deducted: inventory.stock-deducted
+    inventory-stock-level-changed: inventory.stock-level-changed
+    picking-outbound-completed: picking.outbound-completed
+    order-placed: order.placed
+    procurement-po-created: procurement.po-created
+
+# ═══ 배치 설정 ═══
+batch:
+  enabled: ${BATCH_ENABLED:true}
+  warehouses: ${BATCH_WAREHOUSES:FC-PYEONGTAEK,FC-GIMPO,FC-DEOKPYEONG}
+  velocity:
+    cron: "0 0 2 * * *"       # 매일 02:00
+  reslotting:
+    cron: "0 0 3 * * MON"     # 매주 월요일 03:00
+  expiry:
+    cron: "0 0 4 * * *"       # 매일 04:00
+  inventory-health:
+    cron: "0 0 5 * * *"       # 매일 05:00
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,scheduledtasks

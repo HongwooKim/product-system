@@ -1,0 +1,25 @@
+// ═══════════════════════════════════════
+// product-api
+// REST API, Spring Boot 메인.
+// 유일한 bootJar 생성 모듈.
+// BatchScheduler, RuleEngine 설정 포함.
+// ═══════════════════════════════════════
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    implementation project(':product-domain')
+    implementation project(':product-application')
+    implementation project(':product-infrastructure')
+
+    // Web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testRuntimeOnly 'com.h2database:h2'
+}

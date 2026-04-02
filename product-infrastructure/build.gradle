@@ -1,0 +1,35 @@
+// ═══════════════════════════════════════
+// product-infrastructure
+// Kafka, JPA, 외부 시스템 연동.
+// domain + application에 의존.
+// ═══════════════════════════════════════
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+dependencies {
+    implementation project(':product-domain')
+    implementation project(':product-application')
+
+    // JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Kafka
+    implementation 'org.springframework.kafka:spring-kafka'
+
+    // Database
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-database-postgresql'
+
+    // Jackson (Kafka consumer JSON 파싱)
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
